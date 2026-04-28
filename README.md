@@ -27,7 +27,7 @@
 > **Newrex Fusion** is a premium AI API aggregator and router that dispatches your prompt to multiple large language models **simultaneously**, runs a recursive peer-review pass across all outputs, and synthesises a single **consensus-verified** response — in real time.
 
 <br />
-[![Live Demo](https://img.shields.io/badge/Live-Demo-00c2ff?style=for-the-badge&logo=vercel&logoColor=white)](https://newrex-fusion.vercel.app/)
+
 [![React](https://img.shields.io/badge/React_19-61dafb?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite_8-646cff?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev)
 [![TailwindCSS](https://img.shields.io/badge/Tailwind_3-38bdf8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
