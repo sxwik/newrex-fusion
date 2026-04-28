@@ -21,7 +21,7 @@
 <br />
 
 ### ⬡ &nbsp;&nbsp; Multiple minds. &nbsp; One answer. &nbsp;&nbsp; ⬡
-
+[![Live Demo](https://img.shields.io/badge/Live-Demo-00c2ff?style=for-the-badge&logo=vercel&logoColor=white)](https://newrex-fusion.vercel.app/)
 <br />
 
 > **Newrex Fusion** is a premium AI API aggregator and router that dispatches your prompt to multiple large language models **simultaneously**, runs a recursive peer-review pass across all outputs, and synthesises a single **consensus-verified** response — in real time.
