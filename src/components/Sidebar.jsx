@@ -3,7 +3,7 @@ import styles from './Sidebar.module.css';
 export default function Sidebar({ chats, onNewChat, onSelectChat, onLogout }) {
   return (
     <aside className={styles.sidebar}>
-      <div className={styles.logo}>Newrex Fusion</div>
+      <div className={styles.logo}>Newrex Fusion • Early Access</div>
       <button className={styles.newChat} onClick={onNewChat}>+ New chat</button>
       <div className={styles.sectionTitle}>History</div>
       <div className={styles.history}>

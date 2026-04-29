@@ -34,6 +34,7 @@ export default function ChatPage() {
     <div className={styles.layout}>
       <Sidebar chats={chats} onNewChat={() => { setActiveChatId(null); setMessages([]); }} onSelectChat={(c) => { setActiveChatId(c._id); setMessages(c.messages || []); }} onLogout={logout} />
       <main className={styles.chatArea}>
+        <div className={styles.betaBadge}>BETA</div>
         <div className={styles.messages}>{messages.map((m, i) => <div key={i} className={`${styles.message} ${styles[m.role]}`}>{m.content}</div>)}</div>
         <ChatInput onSend={send} />
       </main>
