@@ -15,14 +15,17 @@ const SUGGESTIONS = [
 
 export default function ChatPage() {
   const { token } = useAuth();
+  const [collapsed, setCollapsed] = useState(window.innerWidth < 980);
   const [chats, setChats] = useState([]);
   const [activeChatId, setActiveChatId] = useState(null);
   const [messages, setMessages] = useState([]);
+  const [thinking, setThinking] = useState(false);
   const { stream } = useChatStream(token);
 
   useEffect(() => { api.history(token).then(setChats).catch(console.error); }, [token]);
 
   const send = async (prompt) => {
+    setThinking(true);
     setMessages((m) => [...m, { role: 'user', content: prompt }, { role: 'assistant', content: '' }]);
     stream(prompt, {
       onToken: (t) => setMessages((m) => {
@@ -31,6 +34,7 @@ export default function ChatPage() {
         return copy;
       }),
       onDone: async () => {
+        setThinking(false);
         const res = await api.message(token, { chatId: activeChatId, prompt });
         if (!activeChatId) setActiveChatId(res.chatId);
       }
@@ -41,20 +45,21 @@ export default function ChatPage() {
 
   return (
     <div className={styles.layout}>
-      <Sidebar chats={chats} onNewChat={() => { setActiveChatId(null); setMessages([]); }} onSelectChat={(c) => { setActiveChatId(c._id); setMessages(c.messages || []); }} />
+      <Sidebar collapsed={collapsed} onToggle={() => setCollapsed((v) => !v)} chats={chats} onNewChat={() => { setActiveChatId(null); setMessages([]); }} onSelectChat={(c) => { setActiveChatId(c._id); setMessages(c.messages || []); }} />
       <main className={styles.chatArea}>
         <div className={styles.betaBadge}>BETA</div>
 
         {empty ? (
           <section className={styles.welcome}>
             <h1>What can I help with today?</h1>
+            <p>Ask anything. Build faster. Think bigger.</p>
             <div className={styles.suggestions}>
               {SUGGESTIONS.map((item) => <button key={item} onClick={() => send(item)}>{item}</button>)}
             </div>
           </section>
         ) : (
           <div className={styles.messages}>
-            {messages.map((m, i) => <div key={i} className={`${styles.message} ${styles[m.role]}`}>{m.content}</div>)}
+            {messages.map((m, i) => <div key={i} className={`${styles.message} ${styles[m.role]}`}>{m.content || (thinking && i === messages.length - 1 ? <span className={styles.thinking}>Fusion-1 is thinking<span>.</span><span>.</span><span>.</span></span> : '')}</div>)}
           </div>
         )}
 
