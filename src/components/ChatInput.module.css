@@ -1,0 +1,2 @@
+.wrap{position:sticky;bottom:20px;display:flex;gap:12px;background:#141824;border:1px solid #2a3248;border-radius:999px;padding:10px 12px;max-width:920px;margin:0 auto 10px;width:100%}
+.wrap input{flex:1;background:transparent;border:none;color:#eef2ff;outline:none;padding:6px 10px}.wrap button{background:#6b8afd;color:white;border:none;border-radius:999px;padding:10px 16px;cursor:pointer}
