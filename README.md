@@ -16,7 +16,7 @@
 
 ---
 
-# 🧠 About Newrex Fusion
+#  About Newrex Fusion
 
 Newrex Fusion is a next-generation AI chat platform built with a premium dark interface and designed for speed, simplicity, and intelligence.
 
@@ -32,34 +32,34 @@ It is currently in **Beta**, with many future upgrades planned including:
 
 ---
 
-# ✨ Features
+#  Features
 
 ## Current Features
 
-✅ Human-like AI conversation  
-✅ Fast responses  
-✅ Code generation & debugging  
-✅ Story writing & creative mode  
-✅ Markdown rendering  
-✅ Code block support  
-✅ Chat-style interface  
-✅ Mobile-friendly UI  
-✅ Dark premium design  
-✅ History sidebar  
+ Human-like AI conversation  
+ Fast responses  
+ Code generation & debugging  
+ Story writing & creative mode  
+ Markdown rendering  
+ Code block support  
+ Chat-style interface  
+ Mobile-friendly UI  
+ Dark premium design  
+ History sidebar  
 
 ---
 
 ## Planned Features
 
-🚀 Multi-model response synthesis  
-🚀 Consensus engine  
-🚀 AI voting mode  
-🚀 Arena mode  
-🚀 Specialist AI routing  
-🚀 User accounts  
-🚀 Saved chats in cloud  
-🚀 Voice input/output  
-🚀 AI image generation  
+ Multi-model response synthesis  
+ Consensus engine  
+ AI voting mode  
+ Arena mode  
+ Specialist AI routing  
+ User accounts  
+ Saved chats in cloud  
+ Voice input/output  
+ AI image generation  
 
 ---
 
@@ -76,7 +76,7 @@ It is currently in **Beta**, with many future upgrades planned including:
 
 ---
 
-# 📁 Project Structure
+#  Project Structure
 
 ```bash
 newrex-fusion/
@@ -94,9 +94,9 @@ newrex-fusion/
 ├── vite.config.js
 └── README.md 
 ```
-### Beta Status
+# Beta Status
 
-Newrex Fusion is currently under active development.
+## Newrex Fusion is currently under active development.
 
 This version includes the core AI chat experience.
 
@@ -115,7 +115,7 @@ UI/UX improvements
 ### Getting Started
 
 ### Clone the repository
-``
+```
 git clone https://github.com/sxwik/newrex-fusion.git
 cd newrex-fusion
 Install dependencies
@@ -123,10 +123,11 @@ npm install
 Run locally
 npm run dev
 Build project
-npm run build``
+npm run build
+```
 
 
-### Roadmap
+## Roadmap
 
 Phase 1 — Beta Chat UI 
 
