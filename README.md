@@ -2,7 +2,7 @@
 
 # ⬡ NEWREX FUSION (BETA)
 
-### *Multiple minds. One answer.*
+### Multiple minds. One answer.
 
 [![Status](https://img.shields.io/badge/STATUS-BETA-orange?style=for-the-badge)]()
 [![Version](https://img.shields.io/badge/VERSION-v0.1-blue?style=for-the-badge)]()
@@ -10,19 +10,19 @@
 
 <br>
 
-> **Newrex Fusion** is an advanced AI assistant currently in beta, designed to deliver fast, intelligent, and human-like responses through a premium chat experience.
+> Newrex Fusion is an advanced AI assistant currently in beta, designed to deliver fast, intelligent, and human-like responses through a premium chat experience.
 
 </div>
 
 ---
 
-#  About Newrex Fusion
+# About Newrex Fusion
 
 Newrex Fusion is a next-generation AI chat platform built with a premium dark interface and designed for speed, simplicity, and intelligence.
 
-Unlike traditional bots, Newrex Fusion is **trained to communicate naturally**, provide concise answers when needed, generate code, tell stories, solve problems, and adapt to different conversation styles.
+Unlike traditional bots, Newrex Fusion is trained to communicate naturally, provide concise answers when needed, generate code, tell stories, solve problems, and adapt to different conversation styles.
 
-It is currently in **Beta**, with many future upgrades planned including:
+It is currently in Beta, with many future upgrades planned including:
 
 - Multi-model intelligence fusion  
 - Consensus-based answering  
@@ -32,38 +32,38 @@ It is currently in **Beta**, with many future upgrades planned including:
 
 ---
 
-#  Features
+# Features
 
 ## Current Features
 
- Human-like AI conversation  
- Fast responses  
- Code generation & debugging  
- Story writing & creative mode  
- Markdown rendering  
- Code block support  
- Chat-style interface  
- Mobile-friendly UI  
- Dark premium design  
- History sidebar  
+- Human-like AI conversation  
+- Fast responses  
+- Code generation & debugging  
+- Story writing & creative mode  
+- Markdown rendering  
+- Code block support  
+- Chat-style interface  
+- Mobile-friendly UI  
+- Dark premium design  
+- History sidebar  
 
 ---
 
 ## Planned Features
 
- Multi-model response synthesis  
- Consensus engine  
- AI voting mode  
- Arena mode  
- Specialist AI routing  
- User accounts  
- Saved chats in cloud  
- Voice input/output  
- AI image generation  
+- Multi-model response synthesis  
+- Consensus engine  
+- AI voting mode  
+- Arena mode  
+- Specialist AI routing  
+- User accounts  
+- Saved chats in cloud  
+- Voice input/output  
+- AI image generation  
 
 ---
 
-# 🛠 Tech Stack
+# Tech Stack
 
 | Layer | Technology |
 |-------|------------|
@@ -76,7 +76,7 @@ It is currently in **Beta**, with many future upgrades planned including:
 
 ---
 
-#  Project Structure
+# Project Structure
 
 ```bash
 newrex-fusion/
@@ -92,76 +92,85 @@ newrex-fusion/
 ├── api/
 ├── package.json
 ├── vite.config.js
-└── README.md 
+└── README.md
 ```
+
+---
+
 # Beta Status
 
-## Newrex Fusion is currently under active development.
+Newrex Fusion is currently under active development.
 
 This version includes the core AI chat experience.
 
 Upcoming updates will focus on:
 
-Improved intelligence
+- Improved intelligence  
+- Faster response times  
+- Smarter memory  
+- Multi-model integration  
+- UI/UX improvements  
 
-Faster response times
+---
 
-Smarter memory
+# Getting Started
 
-Multi-model integration
+## Clone the repository
 
-UI/UX improvements
-
-### Getting Started
-
-### Clone the repository
-```
+```bash
 git clone https://github.com/sxwik/newrex-fusion.git
 cd newrex-fusion
-Install dependencies
+```
+
+## Install dependencies
+
+```bash
 npm install
-Run locally
+```
+
+## Run locally
+
+```bash
 npm run dev
-Build project
+```
+
+## Build project
+
+```bash
 npm run build
 ```
 
+---
 
-## Roadmap
+# Roadmap
 
-Phase 1 — Beta Chat UI 
+## Phase 1 — Beta Chat UI
 
-Modern premium UI
+- Modern premium UI  
+- Fast AI responses  
+- Markdown/code rendering  
 
-Fast AI responses
+## Phase 2 — Intelligence Upgrade
 
-Markdown/code rendering
+- Memory system  
+- Smarter context  
+- Faster generation  
 
-Phase 2 — Intelligence Upgrade 
+## Phase 3 — Fusion System
 
-Memory system
+- Multi-model routing  
+- Consensus answers  
+- Arena comparison  
 
-Smarter context
+## Phase 4 — Platform
 
-Faster generation
+- Accounts  
+- Cloud sync  
+- Public API  
 
-Phase 3 — Fusion System 
+---
 
-Multi-model routing
-
-Consensus answers
-
-Arena comparison
-
-Phase 4 — Platform 
-
-Accounts
-
-Cloud sync
-
-Public API
-
-### Author
+# Author
 
 Satwik Bajpai
 
@@ -169,13 +178,16 @@ GitHub: @sxwik
 
 Built with obsession, glow effects, and zero sleep.
 
-### License
+---
+
+# License
 
 MIT License
 
 <div align="center">
-⬡ NEWREX FUSION ⬡
+
+## ⬡ NEWREX FUSION ⬡
 
 The future of AI conversation.
 
-</div> 
+</div>
