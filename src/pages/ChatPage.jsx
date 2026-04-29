@@ -5,6 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { api } from '../lib/api';
 import { useChatStream } from '../hooks/useChatStream';
 import styles from './ChatPage.module.css';
+import MarkdownMessage from '../components/MarkdownMessage';
 
 const SUGGESTIONS = [
   'Design a premium launch plan for my AI startup.',
@@ -70,7 +71,7 @@ export default function ChatPage() {
           </section>
         ) : (
           <div className={styles.messages}>
-            {messages.map((m, i) => <div key={i} className={`${styles.message} ${styles[m.role]}`}>{m.content || (thinking && i === messages.length - 1 ? <span className={styles.thinking}>Fusion-1 is thinking<span>.</span><span>.</span><span>.</span></span> : '')}</div>)}
+            {messages.map((m, i) => <div key={i} className={`${styles.message} ${styles[m.role]}`}>{m.content ? <MarkdownMessage content={m.content} /> : (thinking && i === messages.length - 1 ? <span className={styles.thinking}>Fusion-1 is thinking<span>.</span><span>.</span><span>.</span></span> : '')}</div>)}
             <div ref={messagesEndRef} />
           </div>
         )}
