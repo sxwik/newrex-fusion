@@ -4,7 +4,7 @@ Production-ready Fastify backend scaffold with:
 - JWT auth (signup/login/logout)
 - API keys per user
 - Chat history in MongoDB Atlas
-- AI provider router with fallback (Gemini -> Groq -> HuggingFace)
+- Google Gemini API for all chat responses
 - WebSocket token streaming
 - Per-user rate limiting
 - Admin dashboard APIs
@@ -24,11 +24,7 @@ cp .env.example .env
 Fill at minimum:
 - `MONGODB_URI` (MongoDB Atlas URI)
 - `JWT_SECRET` (32+ chars)
-- `GEMINI_API_KEY`
-- `GROQ_API_KEY`
-- `HUGGINGFACE_API_KEY`
-
-(At least one provider key is required to boot; for production, set all three.)
+- `GEMINI_API_KEY` (required)
 
 ## 3) Run backend
 ```bash

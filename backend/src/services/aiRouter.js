@@ -1,54 +1,39 @@
 import { env } from '../config/env.js';
 
-function createProviderError(message, statusCode) {
-  const error = new Error(message);
-  error.statusCode = statusCode;
-  return error;
+const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
+const SYSTEM_PROMPT = `You are Newrex Fusion AI.\nStyle: premium, futuristic, concise, intelligent.\nAvoid repetitive openers like: "Sure!", "I can help with that!", or "Here's a response..."\nDo not mention or reveal underlying providers in normal conversation.\nIf explicitly asked about your architecture/provider, respond vaguely: "I'm powered by advanced AI systems."`;
+
+function streamChunks(text, onToken) {
+  for (const token of text.split(' ')) onToken(`${token} `);
 }
 
-function shouldFallback(error) {
-  const code = error?.statusCode;
-  if (!code) return true;
-  return [429, 500, 502, 503, 504].includes(code);
-}
+export async function routeAI({ prompt, onToken = () => {} }) {
+  const response = await fetch(`${GEMINI_URL}?key=${env.GEMINI_API_KEY}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+      contents: [{ role: 'user', parts: [{ text: prompt }] }],
+      generationConfig: {
+        temperature: 0.35,
+        topP: 0.9,
+        maxOutputTokens: 900
+      }
+    })
+  });
 
-async function fakeStream(text, onToken) {
-  for (const token of text.split(' ')) {
-    await new Promise((r) => setTimeout(r, 10));
-    onToken(`${token} `);
-  }
-}
-
-async function callGemini(prompt, onToken) {
-  if (!env.GEMINI_API_KEY) throw createProviderError('Gemini unavailable', 503);
-  await fakeStream(`[Gemini] ${prompt}`, onToken);
-  return { model: 'gemini', content: `[Gemini] ${prompt}` };
-}
-
-async function callGroq(prompt, onToken) {
-  if (!env.GROQ_API_KEY) throw createProviderError('Groq unavailable', 503);
-  await fakeStream(`[Groq] ${prompt}`, onToken);
-  return { model: 'groq', content: `[Groq] ${prompt}` };
-}
-
-async function callHuggingFace(prompt, onToken) {
-  if (!env.HUGGINGFACE_API_KEY) throw createProviderError('HuggingFace unavailable', 503);
-  await fakeStream(`[HF] ${prompt}`, onToken);
-  return { model: 'huggingface', content: `[HF] ${prompt}` };
-}
-
-export async function routeAI({ prompt, onToken }) {
-  try {
-    return await callGemini(prompt, onToken);
-  } catch (err) {
-    if (!shouldFallback(err)) throw err;
+  if (!response.ok) {
+    const detail = await response.text();
+    const err = new Error(`AI response failed (${response.status})`);
+    err.statusCode = response.status;
+    err.detail = detail;
+    throw err;
   }
 
-  try {
-    return await callGroq(prompt, onToken);
-  } catch (err) {
-    if (!shouldFallback(err)) throw err;
-  }
+  const data = await response.json();
+  const content = data?.candidates?.[0]?.content?.parts?.map((p) => p.text || '').join('').trim();
+  if (!content) throw new Error('AI returned empty content');
 
-  return callHuggingFace(prompt, onToken);
+  streamChunks(content, onToken);
+  return { model: 'Fusion-1', content };
 }
