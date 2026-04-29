@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Sidebar from '../components/Sidebar';
 import ChatInput from '../components/ChatInput';
 import { useAuth } from '../context/AuthContext';
@@ -15,6 +15,7 @@ const SUGGESTIONS = [
 
 export default function ChatPage() {
   const { token } = useAuth();
+  const messagesEndRef = useRef(null);
   const [collapsed, setCollapsed] = useState(window.innerWidth < 980);
   const [chats, setChats] = useState([]);
   const [activeChatId, setActiveChatId] = useState(null);
@@ -23,6 +24,10 @@ export default function ChatPage() {
   const { stream } = useChatStream(token);
 
   useEffect(() => { api.history(token).then(setChats).catch(console.error); }, [token]);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
 
   const send = async (prompt) => {
     setThinking(true);
@@ -60,6 +65,7 @@ export default function ChatPage() {
         ) : (
           <div className={styles.messages}>
             {messages.map((m, i) => <div key={i} className={`${styles.message} ${styles[m.role]}`}>{m.content || (thinking && i === messages.length - 1 ? <span className={styles.thinking}>Fusion-1 is thinking<span>.</span><span>.</span><span>.</span></span> : '')}</div>)}
+            <div ref={messagesEndRef} />
           </div>
         )}
 
