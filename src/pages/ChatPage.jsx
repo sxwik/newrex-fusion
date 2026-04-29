@@ -21,9 +21,9 @@ export default function ChatPage() {
   const [activeChatId, setActiveChatId] = useState(null);
   const [messages, setMessages] = useState([]);
   const [thinking, setThinking] = useState(false);
-  const { stream } = useChatStream(token);
+  const { stream } = useChatStream();
 
-  useEffect(() => { api.history(token).then(setChats).catch(console.error); }, [token]);
+  useEffect(() => { setChats([]); }, [token]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -40,8 +40,14 @@ export default function ChatPage() {
       }),
       onDone: async () => {
         setThinking(false);
-        const res = await api.message(token, { chatId: activeChatId, prompt });
-        if (!activeChatId) setActiveChatId(res.chatId);
+      },
+      onError: () => {
+        setThinking(false);
+        setMessages((m) => {
+          const copy = [...m];
+          copy[copy.length - 1].content = 'Something went wrong.';
+          return copy;
+        });
       }
     });
   };
