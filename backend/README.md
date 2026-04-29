@@ -20,10 +20,15 @@ npm install
 ```bash
 cp .env.example .env
 ```
+
 Fill at minimum:
 - `MONGODB_URI` (MongoDB Atlas URI)
 - `JWT_SECRET` (32+ chars)
-- `GEMINI_API_KEY` or `GROQ_API_KEY` or `HUGGINGFACE_API_KEY`
+- `GEMINI_API_KEY`
+- `GROQ_API_KEY`
+- `HUGGINGFACE_API_KEY`
+
+(At least one provider key is required to boot; for production, set all three.)
 
 ## 3) Run backend
 ```bash
@@ -31,9 +36,11 @@ npm run dev
 # or
 npm start
 ```
+
 Default port is `5000`.
 
 ## 4) Connect frontend
+
 REST example:
 ```js
 fetch('http://localhost:5000/api/chat/message', {
@@ -46,13 +53,14 @@ fetch('http://localhost:5000/api/chat/message', {
 });
 ```
 
-WebSocket example (token in query for browser compatibility):
+WebSocket example:
 ```js
 const ws = new WebSocket(`ws://localhost:5000/api/chat/stream?token=${token}`);
 ws.send(JSON.stringify({ prompt: 'Hello stream' }));
 ```
 
 ## Admin role management
+
 Admin roles are DB-managed. To promote a user:
 ```bash
 ADMIN_EMAIL=admin@newrexfusion.com npm run seed:admin
